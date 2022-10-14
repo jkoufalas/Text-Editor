@@ -18,9 +18,13 @@ export const putDb = async (content) => {
   const todosDb = await openDB("jate", 1);
   const tx = todosDb.transaction("jate", "readwrite");
   const store = tx.objectStore("jate");
+
+  //when creating content codemirror makes the entire editor content a single string each new line is a \n
+  //therefore each content being saved is the entire text file,
+  //so we delete the old one as this would result in the new added to the old in entriety
   const delrequest = store.clear();
   const delresult = await request;
-
+  //then we add the new content as it holds everything
   const request = store.add({ content: content });
   const result = await request;
   console.log("🚀 - data saved to the database", result);
@@ -34,9 +38,12 @@ export const getDb = async () => {
   const store = tx.objectStore("jate");
   const request = store.getAll();
   const results = await request;
+  //because we need to return a string to codemirror, we need to deconstruct the content from a JSON object
+  //we therefore map it to access the content value and add to array
   let arrayContent = [];
   results.map((result) => arrayContent.push(result.content));
   console.log("result.value", arrayContent);
+  //since the content holds the entire file with each line separated by a \n we join the array so that it is a single string required by the codemirror setValue
   return arrayContent.join();
 };
 
