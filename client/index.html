@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    
+    <!-- <%= htmlWebpackPlugin.options.title %> grabs the title from the webpack -->
       <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
       </link>
@@ -18,13 +18,14 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
       </link>
   </head>
-  <body>
+  <body height="100%">
     <nav id="navbar">
       <div class="nav-btn">
         <a class="btn btn-sm btn-dark" id="buttonInstall" role="button">Install!</a>
       </div>
      <h1> Just Another Text Editor</h1>
-     
+     <!-- <%= htmlWebpackPlugin.options.favicon %> grabs the icon we used from the webpack -->
+
       <div class="navbar-brand" 
             ><img src="<%= htmlWebpackPlugin.options.favicon %>"
           /></div>

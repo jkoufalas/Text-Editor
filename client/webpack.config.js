@@ -3,9 +3,6 @@ const WebpackPwaManifest = require("webpack-pwa-manifest");
 const path = require("path");
 const { InjectManifest } = require("workbox-webpack-plugin");
 
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
-// TODO: Add CSS loaders and babel to webpack.
-
 module.exports = () => {
   return {
     mode: "development",
@@ -25,7 +22,7 @@ module.exports = () => {
         favicon: "./favicon.ico",
       }),
 
-      // Injects our custom service worker
+      // Injects our custom service worker, dest is src-sw as defined in the index to register the service worker
       new InjectManifest({
         swSrc: "./src-sw.js",
         swDest: "src-sw.js",
@@ -44,7 +41,7 @@ module.exports = () => {
         publicPath: "./",
         icons: [
           {
-            src: path.resolve("src/images/logo.png"),
+            src: path.resolve("./src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join("assets", "icons"),
           },
@@ -55,13 +52,14 @@ module.exports = () => {
     module: {
       rules: [
         {
+          // include css caching
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
         {
-          test: /\.m?js$/,
-          exclude: /node_modules/,
-          // We use babel-loader in order to use ES6.
+          test: /\.m?js$/, //.mjs or .js files
+          exclude: /node_modules/, //we dont want to add the  npm modules
+          // We use babel-loader in order to use ES6. As it transpile the code for ES5 to use an most browsers
           use: {
             loader: "babel-loader",
             options: {

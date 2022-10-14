@@ -1,22 +1,29 @@
 import { openDB } from "idb";
+//import indexedDB
 
+//create db or open existing
 const initdb = async () =>
   openDB("jate", 1, {
     upgrade(db) {
+      //if database exists then return as nothing to do
       if (db.objectStoreNames.contains("jate")) {
         console.log("jate database already exists");
         return;
       }
+      //otherwise we need to create the database
       db.createObjectStore("jate", { keyPath: "id", autoIncrement: true });
       console.log("jate database created");
     },
   });
 
-// TODO: Add logic to a method that accepts some content and adds it to the database
+//adds to the indexed db
 export const putDb = async (content) => {
-  console.log("Post to the ase");
+  console.log("Post to the database");
+  //open connection to database
   const todosDb = await openDB("jate", 1);
+  //set transaction type/ permissions to database
   const tx = todosDb.transaction("jate", "readwrite");
+  //connect to store in database
   const store = tx.objectStore("jate");
 
   //when creating content codemirror makes the entire editor content a single string each new line is a \n
@@ -33,9 +40,15 @@ export const putDb = async (content) => {
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
   console.log("GET all from the database");
+  //open connection to database
   const todosDb = await openDB("jate", 1);
+  //set transaction type/ permissions to database
   const tx = todosDb.transaction("jate", "readonly");
+  //connect to store in database
+
   const store = tx.objectStore("jate");
+
+  //get all data from database
   const request = store.getAll();
   const results = await request;
   //because we need to return a string to codemirror, we need to deconstruct the content from a JSON object
