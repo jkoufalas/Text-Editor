@@ -18,7 +18,8 @@ This is an application is a text editor where the user can write javascript and 
 - [GitHub Link](#git-link)
 - [Heroku Live Link](#heroku-live-link)
 - [Installation Instructions](#install-instructions)
-- [Executing Instructions](#)
+- [Install Application to Device](#install-instructions)
+- [Executing Instructions](#executing-instructions)
 - [Screenshot](#Screenshot)
 
 ---
@@ -81,6 +82,19 @@ npm run start
 This will run a build for the client and then start the server.
 
 ---
+
+## Install Application to Device
+
+To install the application to the users device the user can click the install button on the title bar, or use the install application icon at the end of the location bar.
+When they do so, a prompt will ask them to Install or Cancel.
+
+The following image shows the application prompting to install the application:
+
+![Demonstration of the application prompting to install the application.](./Assets/Install.png)
+
+The following image shows the application installed natively on the users device:
+
+![Demonstration of the application installed natively on the users device.](./Assets/nativeApp.png)
 
 ## Executing Instructions
 
