@@ -5,7 +5,6 @@ const { CacheableResponsePlugin } = require("workbox-cacheable-response");
 const { ExpirationPlugin } = require("workbox-expiration");
 const { precacheAndRoute } = require("workbox-precaching/precacheAndRoute");
 // importing all the caching strategies, recipies etc for use in setting up the service worker
-// offline would be used if i had an offline.html page to use if the website wet offline, but as the required objects are cached its not required
 
 //used by inject manifest for the service worker to include pre cache manifest
 precacheAndRoute(self.__WB_MANIFEST);
@@ -30,6 +29,9 @@ warmStrategyCache({
   urls: ["/index.html", "/"],
   strategy: pageCache,
 });
+
+offlineFallback();
+//default offlineFallback recipe, when app is offline
 
 registerRoute(({ request }) => request.mode === "navigate", pageCache);
 //navigate is used to cache when navigating between two documents and only by HTML navigation

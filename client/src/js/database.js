@@ -18,7 +18,6 @@ const initdb = async () =>
 
 //adds to the indexed db
 export const putDb = async (content) => {
-  console.log("Post to the database");
   //open connection to database
   const todosDb = await openDB("jate", 1);
   //set transaction type/ permissions to database
@@ -34,12 +33,10 @@ export const putDb = async (content) => {
   //then we add the new content as it holds everything
   const request = store.add({ content: content });
   const result = await request;
-  console.log("🚀 - data saved to the database", result);
 };
 
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
-  console.log("GET all from the database");
   //open connection to database
   const todosDb = await openDB("jate", 1);
   //set transaction type/ permissions to database
@@ -55,7 +52,6 @@ export const getDb = async () => {
   //we therefore map it to access the content value and add to array
   let arrayContent = [];
   results.map((result) => arrayContent.push(result.content));
-  console.log("result.value", arrayContent);
   //since the content holds the entire file with each line separated by a \n we join the array so that it is a single string required by the codemirror setValue
   return arrayContent.join();
 };
