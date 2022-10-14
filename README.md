@@ -4,20 +4,11 @@
 
 This is an application is a text editor where the user can write javascript and it will be highlighted for them.
 
-- The user can enter the notes area by clicking the "Get Started" button, where they will be redirected to the notes page.
-- If the user manually enters a different route in the sites location other than /notes then they will be redirected back to the home page.
-  <br>
-
-The user can input a title and content in the notes area and save it to storage by pressing the save icon.
-
-- The stored note is added to the list on the left.
-- The user can reload a note to the main note area by clicking the note.
-- The user can delete the note by clicking the delete icon on that note.
-  <br>
-
-To clear the note area so a new note can be entered the user can click the plus (+) icon at the top.
-
-- The user can only add the note when there is content within the title and text area.
+- The user can type anywhere within the text area and write javascript code and it will highlight the syntax.
+- Whenever the user clicks elsewhere the application will save the contents to the browsers IndexedDB.
+- When the user starts loads the application, if the user had previously used the application and there is a database already create. Then the application will load the previous contents to the application text area.
+- The user can install the application to their device.
+- A service worker caches the application so that when the user is offline they can still use the application.
 
 <br>
 
@@ -64,11 +55,30 @@ The link to a running version of the application <br>
 
 ## Install Instructions
 
-The user needs to install the dependancies of express js
+The application is split into a client and server model. The client section holds the information that is served to the clients browser. The server holds the information related to the server side of the application.
+
+The user needs to install the dependancies listed in both the client and server areas.
+To do so, the user needs to run
+
+```
+npm run install
+```
+
+This will enter both the client and server sections and run an install on both.
+
+To build the application, where the content of the dist folder is populated to be served to the client, the user needs to run the
 
 ```
 npm run build
 ```
+
+To run the application, the user needs to run
+
+```
+npm run start
+```
+
+This will run a build for the client and then start the server.
 
 ---
 
