@@ -18,6 +18,9 @@ export const putDb = async (content) => {
   const todosDb = await openDB("jate", 1);
   const tx = todosDb.transaction("jate", "readwrite");
   const store = tx.objectStore("jate");
+  const delrequest = store.clear();
+  const delresult = await request;
+
   const request = store.add({ content: content });
   const result = await request;
   console.log("🚀 - data saved to the database", result);
@@ -30,9 +33,11 @@ export const getDb = async () => {
   const tx = todosDb.transaction("jate", "readonly");
   const store = tx.objectStore("jate");
   const request = store.getAll();
-  const result = await request;
-  console.log("result.value", result);
-  return result;
+  const results = await request;
+  let arrayContent = [];
+  results.map((result) => arrayContent.push(result.content));
+  console.log("result.value", arrayContent);
+  return arrayContent.join();
 };
 
 initdb();
