@@ -30,9 +30,6 @@ warmStrategyCache({
   strategy: pageCache,
 });
 
-offlineFallback();
-//default offlineFallback recipe, when app is offline
-
 registerRoute(({ request }) => request.mode === "navigate", pageCache);
 //navigate is used to cache when navigating between two documents and only by HTML navigation
 
