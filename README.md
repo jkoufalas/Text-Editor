@@ -52,7 +52,7 @@ The link to the GitHub repository of the assignment is <br>
 ## Azure Live Link
 
 The link to a running version of the application <br>
-[https://desolate-citadel-05719.herokuapp.com//](https://desolate-citadel-05719.herokuapp.com/)
+[https://javascripttexteditor.azurewebsites.net/](https://javascripttexteditor.azurewebsites.net/)
 
 ## Install Instructions
 
