@@ -16,7 +16,7 @@ This is an application is a text editor where the user can write javascript and 
 
 - [Mock Up](#mock-up)
 - [GitHub Link](#git-link)
-- [Heroku Live Link](#heroku-live-link)
+- [Azure Live Link](#azure-live-link)
 - [Installation Instructions](#install-instructions)
 - [Install Application to Device](#install-instructions)
 - [Executing Instructions](#executing-instructions)
@@ -49,7 +49,7 @@ The link to the GitHub repository of the assignment is <br>
 
 ---
 
-## Heroku Live Link
+## Azure Live Link
 
 The link to a running version of the application <br>
 [https://desolate-citadel-05719.herokuapp.com//](https://desolate-citadel-05719.herokuapp.com/)
